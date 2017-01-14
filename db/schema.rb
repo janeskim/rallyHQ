@@ -11,6 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20170114233757) do
+
+  create_table "legislators", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "party"
+    t.string   "title"
+    t.string   "state"
+    t.string   "chamber"
+    t.string   "phone"
+    t.string   "website"
+    t.string   "address"
+    t.string   "bioguide_id"
+    t.string   "govtrack_id"
+    t.string   "thomas_id"
+    t.boolean  "in_office"
+    t.datetime "term_start"
+    t.datetime "term_end"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
 end
