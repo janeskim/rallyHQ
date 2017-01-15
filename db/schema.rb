@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170114233757) do
+ActiveRecord::Schema.define(version: 20170115005107) do
+
+  create_table "committees", force: :cascade do |t|
+    t.string   "api_id"
+    t.string   "name"
+    t.string   "phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "legislators", force: :cascade do |t|
     t.string   "first_name"
@@ -31,6 +39,13 @@ ActiveRecord::Schema.define(version: 20170114233757) do
     t.datetime "term_end"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.string   "type"
+    t.string   "number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
