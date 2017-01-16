@@ -9,25 +9,25 @@ module CongressApiService
   CONGRESS_API_BASE = "https://congress.api.sunlightfoundation.com/"
 
   def self.list_upcoming_bills
-    request_params = "upcoming_bills"
-    make_request(request_params)
+    query_url = "upcoming_bills"
+    make_request(query_url)
   end
 
   def self.request_data(data)
-    request_params = parse_request_params(data)
-    response = make_request(request_params)
+    query_url = parse_request_params(data)
+    response = make_request(query_url)
   end
 
   def self.parse_request_params(data)
     if data[:legislators]
       query_data = data[:legislators]
-      request_params = search_for_legislators(query_data)
+      query_url = search_for_legislators(query_data)
     elsif data[:bills]
       query_data = data[:bills]
-      request_params = search_for_bill(query_data)
+      query_url = search_for_bill(query_data)
     end
 
-    return request_params
+    return query_url
   end
 
   def self.search_for_bill(query_data)
@@ -44,9 +44,9 @@ module CongressApiService
 
     query_string = ""
     queries.each { |key,value| query_string = query_string + "&#{key}=#{value}" }    
-    request_params = "legislators?#{query_string}"
+    query_url = "legislators?#{query_string}"
 
-    return request_params
+    return query_url
   end
 
   def self.search_for_legislators(query_data)
@@ -57,9 +57,9 @@ module CongressApiService
     end
   end
 
-  def self.make_request(request_params)
-    query_url = CONGRESS_API_BASE + request_params
-    uri = URI(query_url)
+  def self.make_request(query_url)
+    encoded_url = URI.encode(CONGRESS_API_BASE + query_url)
+    uri = URI(encoded_url)
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
     response = Net::HTTP.get(uri)
