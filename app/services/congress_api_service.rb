@@ -31,7 +31,6 @@ module CongressApiService
   end
 
   def self.search_for_bill(query_data)
-    # short_title, official_title, popular_title, nicknames,  summary, and keywords
     query_string = query_data[:keyword].to_s
     request_params = "bills/search?query=\"#{query_string}\""
   end
@@ -63,14 +62,7 @@ module CongressApiService
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
     response = Net::HTTP.get(uri)
-
-    case response.code.to_i
-    when 200 || 201
-      data = JSON.parse(response)
-      return data["results"]
-    else
-      return "Request failed"
-    end
+    data = JSON.parse(response)
   end
 
 end
