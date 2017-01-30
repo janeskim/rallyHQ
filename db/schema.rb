@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170130062121) do
+ActiveRecord::Schema.define(version: 20170130071738) do
 
   create_table "archives", force: :cascade do |t|
     t.integer "bill_id"
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 20170130062121) do
     t.string   "vote_id"
     t.string   "short_title"
     t.string   "api_id"
-    t.string   "type"
+    t.string   "bill_type"
     t.string   "number"
     t.string   "chamber"
     t.string   "debate_chamber"
