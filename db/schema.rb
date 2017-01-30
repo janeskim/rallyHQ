@@ -11,7 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170115012402) do
+ActiveRecord::Schema.define(version: 20170130062121) do
+
+  create_table "archives", force: :cascade do |t|
+    t.integer "bill_id"
+    t.string  "senate_cloture_result"
+    t.date    "senate_cloture_result_at"
+    t.string  "senate_passage_result"
+    t.date    "senate_passage_result_at"
+    t.string  "senate_override_result"
+    t.date    "senate_override_result_at"
+    t.string  "house_passage_result"
+    t.date    "house_passage_result_at"
+    t.string  "house_override_result"
+    t.date    "house_override_result_at"
+    t.boolean "vetoed"
+    t.date    "vetoed_at"
+    t.boolean "active"
+    t.date    "active_at"
+    t.boolean "awaiting_signature"
+    t.date    "awaiting_signature_since"
+    t.boolean "enacted"
+    t.date    "enacted_at"
+  end
 
   create_table "bills", force: :cascade do |t|
     t.string   "vote_id"
@@ -20,7 +42,6 @@ ActiveRecord::Schema.define(version: 20170115012402) do
     t.string   "type"
     t.string   "number"
     t.string   "chamber"
-    t.string   "result"
     t.string   "debate_chamber"
     t.date     "introduced_on"
     t.date     "last_action_at"
