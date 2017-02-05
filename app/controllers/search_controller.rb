@@ -17,16 +17,4 @@ class SearchController < ApplicationController
     render "legislators" => @legislators
   end
 
-  private
-
-  def search_bills_params
-    attrs = params.require(:bills)
-    attrs.permit(:keyword)
-  end
-
-  def search_legislators_params
-    attrs = params.require(:legislators)
-    attrs.permit(:zipcode, :party, :chamber, :keyword)
-  end
-
 end

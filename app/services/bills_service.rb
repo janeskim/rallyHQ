@@ -12,6 +12,8 @@ module BillsService
     bill.save
 
     find_or_create_associated_result(bill, record) if record.has_key?("history")
+    find_or_create_sponsors(bill, record) if record.has_key?("sponsors")
+    find_or_create_committees(bill, record) if record.has_key?("committee")
   end
 
   def self.find_or_create_associated_result(bill, record)
@@ -24,10 +26,18 @@ module BillsService
     end
   end
 
+  def self.find_or_create_sponsors(bill, record)
+    # sponsor_id = record["sponsor_id"]
+    # if legislator = Legislator.find_by(bioguide_id: sponsor_id)
+  end
+
+  def self.find_or_create_committees(bill, record)
+  end
+
   def self.format_date(datestring)
     return nil unless datestring
     date = DateTime.parse(datestring)
-    return date.strftime('%-m/%-d/%Y')    
+    return date.strftime('%-m/%-d/%Y')
   end
 
   def self.is_active?(history)
