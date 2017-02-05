@@ -2,33 +2,33 @@
 
 <hr>
 
-<table border="1" class="bills_search_results">
+<table border="1" class="search_results">
   <tr>
-    <th class="bills_results_header short">Id</th>
-    <th class="bills_results_header wide">Short Title</th>
-    <th class="bills_results_header short">Active</th>
-    <th class="bills_results_header wide">Sponsor</th>
-    <th class="bills_results_header short">Committee Ids</th>
-    <th class="bills_results_header short">Chamber</th>
-    <th class="bills_results_header short">Result</th>
-    <th class="bills_results_header short">Introduced On</th>
-    <th class="bills_results_header short">Last Action On</th>
-    <th class="bills_results_header short">Debate Chamber</th>
-    <th class="bills_results_header short">Debate At</th>
+    <th class="results_header short">Id</th>
+    <th class="results_header wide">Short Title</th>
+    <th class="results_header short">Active</th>
+    <th class="results_header wide">Sponsor</th>
+    <th class="results_header short">Committee Ids</th>
+    <th class="results_header short">Chamber</th>
+    <th class="results_header short">Result</th>
+    <th class="results_header short">Introduced On</th>
+    <th class="results_header short">Last Action On</th>
+    <th class="results_header short">Debate Chamber</th>
+    <th class="results_header short">Debate At</th>
   </tr>
   <% @bills.each do |bill| %>
     <tr>
-      <td class="bills_results_row"><%= bill["bill_id"] %></td>
-      <td class="bills_results_row"><%= bill["short_title"] %></td>
-      <td class="bills_results_row"><%= BillsService.is_active?(bill["history"]) %></td>
-      <td class="bills_results_row"><%= BillsService.sponsor_name(bill["sponsor"]) %></td>
-      <td class="bills_results_row"><%= bill["committee_ids"].join(", ") %></td>
-      <td class="bills_results_row"><%= bill["chamber"] %></td>
-      <td class="bills_results_row"><%= bill["result"] %></td>
-      <td class="bills_results_row"><%= BillsService.format_date(bill["introduced_on"]) %></td>
-      <td class="bills_results_row"><%= BillsService.format_date(bill["last_action_at"]) %></td>
-      <td class="bills_results_row"><%= bill["debate_chamber"] %></td>
-      <td class="bills_results_row"><%= BillsService.format_date(bill["debate_at"]) %></td>
+      <td class="results_row"><%= bill["bill_id"] %></td>
+      <td class="results_row"><%= bill["short_title"] %></td>
+      <td class="results_row"><%= BillsService.is_active?(bill["history"]) %></td>
+      <td class="results_row"><%= BillsService.sponsor_name(bill["sponsor"]) %></td>
+      <td class="results_row"><%= bill["committee_ids"].join(", ") %></td>
+      <td class="results_row"><%= bill["chamber"] %></td>
+      <td class="results_row"><%= bill["result"] %></td>
+      <td class="results_row"><%= BillsService.format_date(bill["introduced_on"]) %></td>
+      <td class="results_row"><%= BillsService.format_date(bill["last_action_at"]) %></td>
+      <td class="results_row"><%= bill["debate_chamber"] %></td>
+      <td class="results_row"><%= BillsService.format_date(bill["debate_at"]) %></td>
     </tr>
   <% end %>
 </table>

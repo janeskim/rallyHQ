@@ -23,15 +23,19 @@
 
 .search_legislators_container {}
 
-table.bills_search_results {
+table.search_results {
   border-collapse: collapse;
 }
-th.bills_results_header.short {
+th.results_header.short {
   width: 5%;
 }
-th.bills_results_header.wide {
+th.results_header.medium {
+  width: 15%;
+}
+
+th.results_header.wide {
   width: 30%;
 }
-td.bills_results_row {
+td.results_row {
   padding: 5px;
 }
