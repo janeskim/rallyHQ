@@ -1,0 +1,68 @@
+<h2>SEARCH BILLS OR LEGISLATORS</h2>
+
+<hr>
+
+<div class="search_bills_container">
+  <h3 class="search_bills_header">Search bills</h3>
+  <p>This search will return bills that match the keyword in the bill's short title, official title, popular title, nicknames, or summary.</p>
+  <table class="search_form">
+    <%= form_tag "/bills" do %>
+      <tr>
+        <td>
+          <%= label_tag "keyword" %>
+          <%= text_field_tag "bills[keyword]"%>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <%= submit_tag "Submit" %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+<hr>
+
+<div class="search_legislators_container">
+  <h3 class="search_legislators_header">Search legislators</h3>
+  <table class="search_form">
+    <%= form_tag"/legislators" do %>
+      <tr>
+        <td>
+          <%= label_tag "zipcode" %>
+          <%= text_field_tag "legislators[zipcode]"%>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <%= label_tag "party" %>
+          <%= text_field_tag "legislators[party]"%>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <%= label_tag "chamber" %>
+          <%= text_field_tag "legislators[chamber]"%>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <%= label_tag "keyword" %>
+          <%= text_field_tag "legislators[keyword]"%>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <%= submit_tag "Submit" %>
+        </td>
+      </tr>
+    <% end %>
+  <table>
+</div>
+

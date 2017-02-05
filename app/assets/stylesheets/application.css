@@ -13,3 +13,29 @@
  *= require_tree .
  *= require_self
  */
+
+.search_form {
+  width: 25%;
+  text-align: left;
+}
+
+.search_bills_container {}
+
+.search_legislators_container {}
+
+table.search_results {
+  border-collapse: collapse;
+}
+th.results_header.short {
+  width: 5%;
+}
+th.results_header.medium {
+  width: 15%;
+}
+
+th.results_header.wide {
+  width: 30%;
+}
+td.results_row {
+  padding: 5px;
+}

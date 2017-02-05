@@ -1,0 +1,32 @@
+<h1>PEOPLE</h1>
+
+<table border="1" class="search_results">
+  <tr>
+    <th class="results_header wide">Name</th>
+    <th class="results_header short">Party</th>
+    <th class="results_header short">State</th>
+    <th class="results_header short">Chamber</th>
+    <th class="results_header medium">Phone</th>
+    <th class="results_header short">Website</th>
+    <th class="results_header medium">Address</th>
+    <th class="results_header short">In Office</th>
+    <th class="results_header short">Term Start</th>
+    <th class="results_header short">Term End</th>
+  </tr>
+  <tr>
+  <% @legislators.each do |legislator| %>
+    <tr>
+      <td class="results_row"><%= LegislatorsService.display_name(legislator) %></td>
+      <td class="results_row"><%= legislator["party"] %></td>
+      <td class="results_row"><%= legislator["state"] %></td>
+      <td class="results_row"><%= legislator["chamber"] %></td>
+      <td class="results_row"><%= legislator["phone"] %></td>
+      <td class="results_row"><%= legislator["website"] %></td>
+      <td class="results_row"><%= legislator["address"] %></td>
+      <td class="results_row"><%= legislator["in_office"] %></td>
+      <td class="results_row"><%= LegislatorsService.display_date(legislator["term_start"]) %></td>
+      <td class="results_row"><%= LegislatorsService.display_date(legislator["term_end"]) %></td>
+    </tr>
+  <% end %>
+  </tr>
+</table>
