@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170205194921) do
+ActiveRecord::Schema.define(version: 20170207030759) do
 
   create_table "actions", force: :cascade do |t|
     t.integer "legislator_id"
@@ -19,10 +19,11 @@ ActiveRecord::Schema.define(version: 20170205194921) do
     t.string  "category"
   end
 
-  create_table "actions_takens", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "action_id"
-    t.integer "campaign_id"
+  create_table "activities", force: :cascade do |t|
+    t.integer  "action_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "archives", force: :cascade do |t|
