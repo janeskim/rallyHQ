@@ -32,7 +32,7 @@ module CongressApiService
 
   def self.search_for_bill(query_data)
     query_string = query_data[:keyword].to_s
-    request_params = "bills/search?query=\"#{query_string}\""
+    request_params = "bills/search?history.active=true&query=\"#{query_string}\""
   end
 
   def self.search_for_legislators_by_query(query_data)
