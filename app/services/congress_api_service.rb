@@ -87,6 +87,7 @@ module CongressApiService
     http.use_ssl = true
     response = Net::HTTP.get(uri)
     data = JSON.parse(response)
+    return data["results"]
   end
 
 end
