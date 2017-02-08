@@ -15,19 +15,19 @@ module CongressApiService
 
   def self.fetch_committee(committee_id)
     # returns information about committee
-    query_url = "committees?per_page=all&committee_id\"#{committee_id}\""
+    query_url = "committees?per_page=all&committee_id=\"#{committee_id}\""
     make_request(query_url)
   end
 
   def self.fetch_committee_members(committee_id)
     # returns all legislators who belong to committee
-    query_url = "committees?per_page=all&committee_id\"#{committee_id}\"&fields=members"
+    query_url = "committees?per_page=all&committee_id=\"#{committee_id}\"&fields=members"
     make_request(query_url)
   end
 
   def self.fetch_legislator_committees(bioguide_id)
     # returns all committees that legislator is part of
-    query_url = "committees?per_page=all&member_ids\"#{bioguide_id}\""
+    query_url = "committees?per_page=all&member_ids=\"#{bioguide_id}\""
     make_request(query_url)
   end
 

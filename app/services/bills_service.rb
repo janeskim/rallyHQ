@@ -31,8 +31,8 @@ module BillsService
     if legislator = Legislator.find_by(bioguide_id: sponsor_bioguide_id)
       legislator.bills << bill if legislator.bills.exclude?(bill)
     else
-      legislator_data = CongressApiService.fetch_legislator(sponsor_bioguide_id)
-      legislator = LegislatorService.find_or_create(legislator_data.first)
+      legislator_data = CongressApiService.fetch_legislator(sponsor_bioguide_id).first
+      legislator = LegislatorsService.find_or_create(legislator_data.first)
       legislator.bills << bill if legislator.bills.exclude?(bill)
     end
   end
@@ -40,9 +40,9 @@ module BillsService
   def self.find_or_create_committees(bill, record)
     committee_ids = record['committee_ids']
     committee_ids.each do |committee_id|
-      committee = CommitteeService.find_or_create(committee_id)
+      committee = CommitteesService.find_or_create(committee_id)
       committee.bills << bill if committee.bills.exclude?(bill)
-      LegislatorService.find_or_create_by_committee(committee)
+      LegislatorsService.find_or_create_by_committee(committee)
       committee.legislators.each { |legislator| legislator.bills << bill if legislator.bills.exclude?(bill) }
     end
   end

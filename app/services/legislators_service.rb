@@ -26,8 +26,8 @@ module LegislatorsService
   end
 
   def self.find_or_create_by_committee(committee)
-    committee_members_data = CongressApiService.fetch_committee_members(committee.api_id)
-    committee_members_data.each do |data|
+    committee_members_data = CongressApiService.fetch_committee_members(committee.api_id).first
+    committee_members_data['members'].each do |data|
       next unless legislator_data = data['legislator']
       legislator = find_or_create(legislator_data)
       legislator.committees << committee if legislator.committees.exclude?(committee)
