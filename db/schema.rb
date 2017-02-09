@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170207030759) do
+ActiveRecord::Schema.define(version: 20170208033904) do
 
   create_table "actions", force: :cascade do |t|
     t.integer "legislator_id"
@@ -108,6 +108,14 @@ ActiveRecord::Schema.define(version: 20170207030759) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "committees_legislators", id: false, force: :cascade do |t|
+    t.integer "committee_id",  null: false
+    t.integer "legislator_id", null: false
+  end
+
+  add_index "committees_legislators", ["committee_id"], name: "index_committees_legislators_on_committee_id"
+  add_index "committees_legislators", ["legislator_id"], name: "index_committees_legislators_on_legislator_id"
 
   create_table "legislator_bills", force: :cascade do |t|
     t.integer "legislator_id", null: false

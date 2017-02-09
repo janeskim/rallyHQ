@@ -5,15 +5,13 @@ class SearchController < ApplicationController
 
   def bills
     query_url = CongressApiService.parse_request_params(params)
-    response = CongressApiService.make_request(query_url)
-    @bills = response["results"]
+    @bills = CongressApiService.make_request(query_url)
     render "bills" => @bills
   end
 
   def legislators
     query_url = CongressApiService.parse_request_params(params)
-    response = CongressApiService.make_request(query_url)
-    @legislators = response["results"]
+    @legislators = CongressApiService.make_request(query_url)
     render "legislators" => @legislators
   end
 
