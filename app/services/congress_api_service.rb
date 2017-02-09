@@ -13,6 +13,11 @@ module CongressApiService
     make_request(query_url)
   end
 
+  def self.fetch_bill(bill_id)
+    query_url = "bills/search?bill_id=\"#{bill_id}\""
+    make_request(query_url)
+  end
+
   def self.fetch_committee(committee_id)
     # returns information about committee
     query_url = "committees?per_page=all&committee_id=\"#{committee_id}\""
