@@ -26,4 +26,8 @@ class Legislator < ActiveRecord::Base
   has_and_belongs_to_many :bills
   has_and_belongs_to_many :committees
   has_many :actions
+
+  def display_name
+    "#{title}. #{first_name} #{last_name}"
+  end
 end
