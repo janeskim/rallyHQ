@@ -94,13 +94,6 @@ ActiveRecord::Schema.define(version: 20170208033904) do
     t.datetime "updated_at"
   end
 
-  create_table "committee_bills", force: :cascade do |t|
-    t.integer "committee_id", null: false
-    t.integer "bill_id",      null: false
-  end
-
-  add_index "committee_bills", ["committee_id", "bill_id"], name: "index_committee_bills_on_committee_id_and_bill_id", unique: true
-
   create_table "committees", force: :cascade do |t|
     t.string   "api_id"
     t.string   "name"
@@ -116,13 +109,6 @@ ActiveRecord::Schema.define(version: 20170208033904) do
 
   add_index "committees_legislators", ["committee_id"], name: "index_committees_legislators_on_committee_id"
   add_index "committees_legislators", ["legislator_id"], name: "index_committees_legislators_on_legislator_id"
-
-  create_table "legislator_bills", force: :cascade do |t|
-    t.integer "legislator_id", null: false
-    t.integer "bill_id",       null: false
-  end
-
-  add_index "legislator_bills", ["legislator_id", "bill_id"], name: "index_legislator_bills_on_legislator_id_and_bill_id", unique: true
 
   create_table "legislators", force: :cascade do |t|
     t.string   "first_name"
