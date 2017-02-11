@@ -8,4 +8,14 @@ Rails.application.routes.draw do
   resources :bills
   resources :legislators
   resources :campaigns
+
+  namespace :api do
+    namespace :v1 do
+      resources :campaigns, only: [:show] do
+        get '/bill' => 'campaigns#bill'
+        get '/legislators' => 'campaigns#legislators'
+      end
+    end
+  end
+
 end
