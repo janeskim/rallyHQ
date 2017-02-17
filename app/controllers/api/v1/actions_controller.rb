@@ -1,21 +1,14 @@
 class Api::V1::ActionsController < Api::V1::BaseController
-
-  def index
-    respond_with(Actions.all)
-  end
+  respond_to :json
 
   def create
-    respond_with(:api, :v1, Actions.create(action_params))
+    action = Action.new(action_params)
+    action.save
+    respond_with(action, json: action)
   end
 
   def destroy
-    respond_with Actions.destroy(params[:id])
-  end
-
-  def update
-    action = Actions.find(params["id"])
-    action.update_attributes(action_params)
-    respond_with(action, json: action)
+    respond_with Action.destroy(params[:id])
   end
 
   private

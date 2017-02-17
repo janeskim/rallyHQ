@@ -15,6 +15,8 @@ Rails.application.routes.draw do
         get '/bill' => 'campaigns#bill'
         get '/legislators' => 'campaigns#legislators'
       end
+
+      resources :actions
     end
   end
 
