@@ -2,9 +2,7 @@ var CampaignLegislators = React.createClass({
 
   getInitialState() {
     return {
-      legislators: [],
-      errors: {},
-      action: {}
+      legislators: []
     }
   },
 
@@ -19,24 +17,19 @@ var CampaignLegislators = React.createClass({
 
   handleClick() {
     var legislatorId = this.refs.legislatorId.value,
-        checklistId = this.props.checklistId;
+        checklistId = this.props.checklistId,
+        token = $('meta[name="csrf-token"]').attr('content'),
+        data = {legislator_id: legislatorId, checklist_id: checklistId, category: 'phone'};
 
     $.ajax({
       type: 'POST',
       url: '/api/v1/actions.json',
-      data: {
-        action: {
-          legislator_id: legislatorId,
-          checklist_id: checklistId,
-          category: 'phone'
-        }
-      },
+      data: JSON.stringify(data),
+      dataType: 'json',
       beforeSend: function(xhr) {
-        xhr.setRequestHeader(
-          'X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'),
-          'Content-Type', 'application/json',
-          'Accept', 'application/json'
-        );
+        xhr.setRequestHeader('X-CSRF-Token', token);
+        xhr.setRequestHeader('Accept', 'application/json');
+        xhr.setRequestHeader('Content-Type', 'application/json');
       },
       success: function(data) {
       }.bind(this),
