@@ -1,0 +1,35 @@
+"Campaign"
+
+<div id="tabs" class="ui-tabs ui-corner-all ui-widget ui-widget-content">
+  <ul>
+    <li class="ui-tabs-tab ui-corner-top ui-state-default ui-tab ui-tabs-active ui-state-actvie">
+      <a href="#fragment-1">One</a>
+    </li>
+    <li class="ui-tabs-tab ui-corner-top ui-state-default ui-tab">
+      <a href="#fragment-2">Two</a>
+    </li>
+    <li class="ui-tabs-tab ui-corner-top ui-state-default ui-tab">
+      <a href="#fragment-3">Three</a>
+    </li>
+  </ul>
+  <div id="fragment-1" class="ui-tabs-panel ui-corner-bottom ui-widget-content">
+    <% @campaigns.each do |campaign| %>
+      <h4><%= campaign.bill.short_title %></h4>
+      <% campaign.bill.legislators.each do |legislator| %>
+        <p><%= legislator.display_name %></p>
+        <p><%= legislator.phone %></p>
+      <% end %>
+    <% end %>
+  </div>
+  <div id="fragment-2" class="ui-tabs-panel ui-corner-bottom ui-widget-content">
+    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+  </div>
+  <div id="fragment-3" class="ui-tabs-panel ui-corner-bottom ui-widget-content">
+    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+  </div>
+</div>
+
+
+<script>
+$( "#tabs" ).tabs();
+</script>

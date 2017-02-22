@@ -26,6 +26,9 @@ gem 'pry'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+# Displays schema at the top of every model
+gem 'annotate'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 

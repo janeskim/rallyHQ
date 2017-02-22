@@ -4,6 +4,7 @@ module BillsService
     bill = Bill.find_by(api_id: record['bill_id']) || Bill.new
     bill.vote_id        = record['vote_id']
     bill.short_title    = record['short_title']
+    bill.api_id         = record['bill_id']
     bill.bill_type      = record['bill_type']
     bill.number         = record['number']
     bill.chamber        = record['chamber']
