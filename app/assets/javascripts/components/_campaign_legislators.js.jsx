@@ -7,19 +7,17 @@ var CampaignLegislators = React.createClass({
   },
 
   componentDidMount() {
-    var campaignId = this.props.campaignId,
-        checklistId = this.props.checklistId;
+    var campaignId = this.props.campaignId;
 
     $.getJSON('/api/v1/campaigns/' + campaignId + '/legislators.json', (response) =>
       { this.setState({ legislators: response })
     });
   },
 
-  handleClick() {
-    var legislatorId = this.refs.legislatorId.value,
-        checklistId = this.props.checklistId,
-        token = $('meta[name="csrf-token"]').attr('content'),
-        data = {legislator_id: legislatorId, checklist_id: checklistId, category: 'phone'};
+  handleClick(id) {
+    const legislator_id = id;
+    const token = $('meta[name="csrf-token"]').attr('content');
+    const data = { legislator_id: legislator_id, category: 'phone' };
 
     $.ajax({
       type: 'POST',
@@ -44,9 +42,7 @@ var CampaignLegislators = React.createClass({
           <div key={legislator.id}>
             <input type="checkbox"
               className="legislator_contact"
-              ref="legislatorId"
-              value={legislator.id}
-              onClick={this.handleClick} />
+              onClick={this.handleClick.bind(this, legislator.id)} />
             <div className="legislator_contact">
               <p>{legislator.title} {legislator.first_name} {legislator.last_name}</p>
               <p>{legislator.phone}</p>
