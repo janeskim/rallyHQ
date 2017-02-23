@@ -1,5 +1,11 @@
 var Campaign = React.createClass({
 
+  getInitialState() {
+    return {
+      legislators: []
+    }
+  },
+
   render() {
     var campaignId = this.props.campaign_id;
     return (
