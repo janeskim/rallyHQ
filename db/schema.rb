@@ -11,12 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170208033904) do
+ActiveRecord::Schema.define(version: 20170318213646) do
 
   create_table "actions", force: :cascade do |t|
-    t.integer "legislator_id"
-    t.integer "checklist_id"
-    t.string  "category"
+    t.integer  "legislator_id"
+    t.integer  "checklist_id"
+    t.string   "category"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "activities", force: :cascade do |t|
@@ -27,25 +29,27 @@ ActiveRecord::Schema.define(version: 20170208033904) do
   end
 
   create_table "archives", force: :cascade do |t|
-    t.integer "bill_id"
-    t.string  "senate_cloture_result"
-    t.date    "senate_cloture_result_at"
-    t.string  "senate_passage_result"
-    t.date    "senate_passage_result_at"
-    t.string  "senate_override_result"
-    t.date    "senate_override_result_at"
-    t.string  "house_passage_result"
-    t.date    "house_passage_result_at"
-    t.string  "house_override_result"
-    t.date    "house_override_result_at"
-    t.boolean "vetoed"
-    t.date    "vetoed_at"
-    t.boolean "active"
-    t.date    "active_at"
-    t.boolean "awaiting_signature"
-    t.date    "awaiting_signature_since"
-    t.boolean "enacted"
-    t.date    "enacted_at"
+    t.integer  "bill_id"
+    t.string   "senate_cloture_result"
+    t.date     "senate_cloture_result_at"
+    t.string   "senate_passage_result"
+    t.date     "senate_passage_result_at"
+    t.string   "senate_override_result"
+    t.date     "senate_override_result_at"
+    t.string   "house_passage_result"
+    t.date     "house_passage_result_at"
+    t.string   "house_override_result"
+    t.date     "house_override_result_at"
+    t.boolean  "vetoed"
+    t.date     "vetoed_at"
+    t.boolean  "active"
+    t.date     "active_at"
+    t.boolean  "awaiting_signature"
+    t.date     "awaiting_signature_since"
+    t.boolean  "enacted"
+    t.date     "enacted_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "bills", force: :cascade do |t|
