@@ -2,23 +2,22 @@ var CampaignBill = React.createClass({
 
   getInitialState() {
     return {
+      campaignId: this.props.campaignId,
       bill: {}
     }
   },
 
   componentDidMount() {
-    var campaignId = this.props.campaignId;
-
-    $.getJSON('/api/v1/campaigns/' + campaignId + '/bill.json', (response) => 
-      { this.setState({ bill: response });
-    });
+    $.getJSON(
+      '/api/v1/campaigns/' + this.state.campaignId + '/bill.json', (response) =>
+        { this.setState(Object.assign({}, this.state, { bill: response })) }
+    );
   },
 
   render() {
-    var bill = this.state.bill;
     return(
       <div> 
-        <h3>{ bill.short_title }</h3>
+        <h3>{ this.state.bill.short_title }</h3>
       </div>
     )
   }

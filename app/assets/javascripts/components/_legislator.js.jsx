@@ -3,7 +3,8 @@ var Legislator = React.createClass({
   getInitialState() {
     return {
       selected: false,
-      actionId: ''
+      actionId: '',
+      legislator: this.props.legislator
     }
   },
 
@@ -65,7 +66,7 @@ var Legislator = React.createClass({
   },
 
   render() {
-    var legislator = this.props.legislator;
+    var legislator = this.state.legislator;
 
     return (
       <div >
