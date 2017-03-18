@@ -6,6 +6,8 @@
 #  legislator_id :integer
 #  checklist_id  :integer
 #  category      :string
+#  created_at    :datetime
+#  updated_at    :datetime
 #
 
 class Action < ActiveRecord::Base
