@@ -2,7 +2,8 @@ var Legislator = React.createClass({
 
   getInitialState() {
     return {
-      selected: false
+      selected: false,
+      actionId: ''
     }
   },
 
@@ -18,7 +19,9 @@ var Legislator = React.createClass({
         xhr.setRequestHeader('Content-Type', 'application/json');
       },
       success: function(data) {
-        console.log("create success");
+        this.setState(Object.assign({}, this.state, {
+          actionId: data.id
+        }));
       }.bind(this),
       error: function(xhr, status, err) {
         console.log("create failure");
@@ -29,7 +32,7 @@ var Legislator = React.createClass({
   deleteAction(data, token) {
     $.ajax({
       type: 'DELETE',
-      url: '/api/v1/actions.json',
+      url: '/api/v1/actions/' + this.state.actionId,
       data: JSON.stringify(data),
       dataType: 'json',
       beforeSend: function(xhr) {
@@ -38,7 +41,9 @@ var Legislator = React.createClass({
         xhr.setRequestHeader('Content-Type', 'application/json');
       },
       success: function(data) {
-        console.log("delete success");
+        this.setState(Object.assign({}, this.state, {
+          actionId: ''
+        }));
       }.bind(this),
       error: function(xhr, status, err) {
         console.log("delete failure");
@@ -51,7 +56,7 @@ var Legislator = React.createClass({
     const data = { legislator_id: legislator_id, category: 'phone' };
     const token = $('meta[name="csrf-token"]').attr('content');
 
-    this.state.selected = !this.state.selected; // this stinks!
+    this.state.selected = !this.state.selected;
     if (this.state.selected) {
       this.createAction(data, token)
     } else {

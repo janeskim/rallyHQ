@@ -16,7 +16,7 @@ Rails.application.routes.draw do
         get '/legislators' => 'campaigns#legislators'
       end
 
-      resources :actions
+      resources :actions, only: [:create, :destroy]
     end
   end
 
