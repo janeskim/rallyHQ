@@ -16,3 +16,11 @@ class Campaign < ActiveRecord::Base
   belongs_to :bill
   has_many :checklists
 end
+
+
+# how to create an action through campaign?
+# action == legislator_id && checklist_id
+# how to get checklist through campaign?
+
+# campaign.checklists = []
+# checklist == campaign_id && title

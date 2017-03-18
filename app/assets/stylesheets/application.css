@@ -39,3 +39,12 @@ th.results_header.wide {
 td.results_row {
   padding: 5px;
 }
+
+.legislator_contact {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 20px;
+}
+
+
+
