@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170318213646) do
+ActiveRecord::Schema.define(version: 20170318221921) do
 
   create_table "actions", force: :cascade do |t|
     t.integer  "legislator_id"
@@ -132,6 +132,14 @@ ActiveRecord::Schema.define(version: 20170318213646) do
     t.datetime "term_end"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "scripts", force: :cascade do |t|
+    t.string   "title"
+    t.text     "body"
+    t.integer  "campaign_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: :cascade do |t|
