@@ -22,6 +22,8 @@
 #  awaiting_signature_since  :date
 #  enacted                   :boolean
 #  enacted_at                :date
+#  created_at                :datetime
+#  updated_at                :datetime
 #
 
 class Archive < ActiveRecord::Base
